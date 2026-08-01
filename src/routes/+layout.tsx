@@ -1,12 +1,15 @@
 import { useState } from 'react';
 import { Outlet } from 'react-router';
 import { Sidebar } from '../components/Sidebar';
+import { BackToTop } from '../components/BackToTop';
 import { IconMenu, IconX, IconSun, IconMoon } from '../components/Icons';
 import { useTheme } from '../contexts/ThemeContext';
+import { useScrollReveal } from '../hooks/useScrollReveal';
 
 export function RootLayout() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const { theme, toggle } = useTheme();
+  useScrollReveal();
 
   const closeSidebar = () => setSidebarOpen(false);
 
@@ -47,6 +50,8 @@ export function RootLayout() {
       <main className="main-content" id="main-content">
         <Outlet />
       </main>
+
+      <BackToTop />
     </div>
   );
 }

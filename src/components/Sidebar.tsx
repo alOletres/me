@@ -1,25 +1,44 @@
-import { IconGitHub, IconMail, IconDownload, IconCheck, IconSun, IconMoon } from './Icons';
-import { useTheme } from '../contexts/ThemeContext';
+import {
+  IconGitHub,
+  IconMail,
+  IconDownload,
+  IconCheck,
+  IconSun,
+  IconMoon,
+} from "./Icons";
+import { useTheme } from "../contexts/ThemeContext";
 
 interface SidebarProps {
   isOpen?: boolean;
 }
 
 const skillGroups = [
-  { label: 'Backend', tags: ['Node.js', 'NestJS', 'Express.js', 'TypeScript', 'REST APIs'] },
-  { label: 'Frontend', tags: ['React', 'Next.js', 'Angular', 'JavaScript', 'HTML/CSS'] },
-  { label: 'Mobile', tags: ['React Native'] },
-  { label: 'Database', tags: ['MySQL', 'PostgreSQL', 'Firebase'] },
-  { label: 'UI / Styling', tags: ['Tailwind CSS', 'MUI', 'Angular Material'] },
+  {
+    label: "Backend",
+    tags: ["Node.js", "NestJS", "Express.js", "TypeScript", "REST APIs"],
+  },
+  {
+    label: "Frontend",
+    tags: ["React", "Next.js", "Angular", "JavaScript", "HTML/CSS"],
+  },
+  { label: "Mobile", tags: ["React Native"] },
+  { label: "Database", tags: ["MySQL", "PostgreSQL", "Firebase"] },
+  { label: "UI / Styling", tags: ["Tailwind CSS", "MUI", "Angular Material"] },
 ];
 
-const extraSkills = ['Docker', 'CI/CD', 'Git & GitHub', 'Socket.IO', 'AI-Assisted Dev (Claude)'];
+const extraSkills = [
+  "Docker",
+  "CI/CD",
+  "Git & GitHub",
+  "Socket.IO",
+  "AI-Assisted Dev (Claude)",
+];
 
 const facts: [string, string][] = [
-  ['Location', 'Molave, ZdS, PH'],
-  ['Experience', '5+ Years'],
-  ['Availability', 'Open to Work'],
-  ['Employment', 'Full-time'],
+  ["Location", "Molave, ZdS, PH"],
+  ["Experience", "5+ Years"],
+  ["Availability", "Open to Work"],
+  ["Employment", "Full-time"],
 ];
 
 export function Sidebar({ isOpen = false }: SidebarProps) {
@@ -27,7 +46,7 @@ export function Sidebar({ isOpen = false }: SidebarProps) {
 
   return (
     <aside
-      className={`sidebar${isOpen ? ' is-open' : ''}`}
+      className={`sidebar${isOpen ? " is-open" : ""}`}
       aria-label="Profile sidebar"
       id="sidebar"
     >
@@ -35,7 +54,7 @@ export function Sidebar({ isOpen = false }: SidebarProps) {
       <div className="sidebar-avatar">
         <div className="avatar-ring">
           <img
-            src="/avatar.png"
+            src="/profile.jpg"
             alt="Alejandro T. Oletres Jr."
             className="avatar-photo"
             width={88}
@@ -103,8 +122,10 @@ export function Sidebar({ isOpen = false }: SidebarProps) {
             <div key={label} className="skill-group">
               <p className="skill-group-label">{label}</p>
               <div className="skill-tags">
-                {tags.map(tag => (
-                  <span key={tag} className="skill-tag">{tag}</span>
+                {tags.map((tag) => (
+                  <span key={tag} className="skill-tag">
+                    {tag}
+                  </span>
                 ))}
               </div>
             </div>
@@ -116,9 +137,11 @@ export function Sidebar({ isOpen = false }: SidebarProps) {
       <div className="sidebar-section">
         <p className="sidebar-section-label">Tools & Extras</p>
         <ul className="extra-skills">
-          {extraSkills.map(skill => (
+          {extraSkills.map((skill) => (
             <li key={skill} className="extra-skill-item">
-              <span className="check-icon"><IconCheck size={12} /></span>
+              <span className="check-icon">
+                <IconCheck size={12} />
+              </span>
               {skill}
             </li>
           ))}
@@ -126,16 +149,16 @@ export function Sidebar({ isOpen = false }: SidebarProps) {
       </div>
 
       {/* Theme toggle */}
-      <div className="sidebar-section" style={{ borderBottom: 'none' }}>
+      <div className="sidebar-section" style={{ borderBottom: "none" }}>
         <button
           className="theme-toggle"
           onClick={toggle}
-          aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
+          aria-label={`Switch to ${theme === "light" ? "dark" : "light"} mode`}
         >
           <span className="theme-toggle-label">
-            {theme === 'light' ? 'Dark Mode' : 'Light Mode'}
+            {theme === "light" ? "Dark Mode" : "Light Mode"}
           </span>
-          {theme === 'light' ? <IconMoon size={15} /> : <IconSun size={15} />}
+          {theme === "light" ? <IconMoon size={15} /> : <IconSun size={15} />}
         </button>
       </div>
 

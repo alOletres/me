@@ -41,10 +41,10 @@ const projects: Project[] = [
 
 export function Projects() {
   return (
-    <section className="section" id="projects" aria-labelledby="projects-heading">
+    <section className="section" id="projects" aria-labelledby="projects-heading" data-reveal>
       <p className="section-label">Portfolio</p>
       <h2 className="section-title" id="projects-heading">Featured Projects</h2>
-      <div className="projects-grid">
+      <div className="projects-grid" data-reveal-stagger>
         {projects.map(({ name, desc, stack, note }) => (
           <article key={name} className="project-card">
             <div>

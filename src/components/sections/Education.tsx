@@ -2,7 +2,7 @@ import { IconGradCap } from '../Icons';
 
 export function Education() {
   return (
-    <section className="section" id="education" aria-labelledby="education-heading">
+    <section className="section" id="education" aria-labelledby="education-heading" data-reveal>
       <p className="section-label">Background</p>
       <h2 className="section-title" id="education-heading">Education</h2>
       <div className="education-card">

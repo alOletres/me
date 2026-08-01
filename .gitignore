@@ -12,6 +12,9 @@ dist
 dist-ssr
 *.local
 
+# Kept locally for restoring the pre-cutout avatar; never publish
+avatar.original.png
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

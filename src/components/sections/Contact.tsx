@@ -38,7 +38,7 @@ const contacts: ContactItem[] = [
 
 export function Contact() {
   return (
-    <section className="section" id="contact" aria-labelledby="contact-heading">
+    <section className="section" id="contact" aria-labelledby="contact-heading" data-reveal>
       <p className="section-label">Get in Touch</p>
       <h2 className="section-title" id="contact-heading">Contact</h2>
       <p className="contact-intro">

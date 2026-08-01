@@ -49,10 +49,10 @@ const services: Service[] = [
 
 export function WhatIDo() {
   return (
-    <section className="section" id="what-i-do" aria-labelledby="what-i-do-heading">
+    <section className="section" id="what-i-do" aria-labelledby="what-i-do-heading" data-reveal>
       <p className="section-label">Services</p>
       <h2 className="section-title" id="what-i-do-heading">What I Do</h2>
-      <div className="cards-grid">
+      <div className="cards-grid" data-reveal-stagger>
         {services.map(({ icon, title, desc }) => (
           <article key={title} className="service-card">
             <div className="service-icon" aria-hidden="true">{icon}</div>
