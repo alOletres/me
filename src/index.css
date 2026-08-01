@@ -1,68 +1,153 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
+/* =========================================================
+   DESIGN TOKENS
+   ========================================================= */
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+  --font-heading: 'Archivo', system-ui, sans-serif;
+  --font-body: 'Space Grotesk', system-ui, sans-serif;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  /* Light mode colors */
+  --bg-page: #FAFAFA;
+  --bg-sidebar: #180810;
+  --bg-card: #FFFFFF;
+  --bg-card-hover: #F4F4F5;
+  --bg-tag: #F4F4F5;
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  --text-primary: #09090B;
+  --text-secondary: #52525B;
+  --text-muted: #A1A1AA;
+
+  --sidebar-text: #FFFFFF;
+  --sidebar-muted: rgba(255, 255, 255, 0.55);
+  --sidebar-border: rgba(255, 255, 255, 0.08);
+
+  --accent: #BE1B3A;
+  --accent-hover: #9B1530;
+  --accent-subtle: rgba(190, 27, 58, 0.09);
+
+  --border: #E4E4E7;
+  --success: #16A34A;
+
+  --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.07), 0 4px 12px rgba(0, 0, 0, 0.04);
+  --shadow-card-hover: 0 4px 20px rgba(0, 0, 0, 0.10), 0 1px 4px rgba(0, 0, 0, 0.06);
+  --shadow-sidebar: 4px 0 24px rgba(0, 0, 0, 0.12);
+
+  /* Spacing */
+  --sp-1: 4px;
+  --sp-2: 8px;
+  --sp-3: 12px;
+  --sp-4: 16px;
+  --sp-5: 20px;
+  --sp-6: 24px;
+  --sp-8: 32px;
+  --sp-10: 40px;
+  --sp-12: 48px;
+  --sp-16: 64px;
+
+  /* Border radii */
+  --r-sm: 4px;
+  --r-md: 8px;
+  --r-lg: 12px;
+  --r-full: 9999px;
+
+  /* Layout */
+  --sidebar-w: 280px;
+  --mobile-nav-h: 60px;
+
+  /* Transitions */
+  --t-fast: 150ms ease;
+  --t-base: 200ms ease;
+  --t-slow: 300ms ease;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
+/* =========================================================
+   DARK MODE
+   ========================================================= */
+[data-theme="dark"] {
+  --bg-page: #0A0308;
+  --bg-card: #180810;
+  --bg-card-hover: #240F1A;
+  --bg-tag: #240F1A;
+
+  --text-primary: #FAFAFA;
+  --text-secondary: #A1A1AA;
+  --text-muted: #71717A;
+
+  --accent: #F43F5E;
+  --accent-hover: #FB7185;
+  --accent-subtle: rgba(244, 63, 94, 0.12);
+
+  --border: #2D0E1C;
+
+  --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.3), 0 4px 12px rgba(0, 0, 0, 0.2);
+  --shadow-card-hover: 0 4px 20px rgba(0, 0, 0, 0.4), 0 1px 4px rgba(0, 0, 0, 0.25);
+  --shadow-sidebar: 4px 0 24px rgba(0, 0, 0, 0.4);
 }
-a:hover {
-  color: #535bf2;
+
+/* =========================================================
+   RESET
+   ========================================================= */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
 }
 
 body {
-  margin: 0;
-  display: flex;
-  place-items: center;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--text-primary);
+  background-color: var(--bg-page);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   min-width: 320px;
-  min-height: 100vh;
+  transition: background-color var(--t-slow), color var(--t-slow);
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
 }
 
 button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
+  font-family: var(--font-body);
   cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  border: none;
+  background: none;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
+img {
+  max-width: 100%;
+  display: block;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+#root {
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
   }
 }
