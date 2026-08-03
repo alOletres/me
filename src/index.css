@@ -22,6 +22,7 @@
   --bg-card-hover: #242424;
   --bg-tag:        #242424;
   --bg-topnav:     #111111;
+  --grid-line:     rgba(255, 255, 255, 0.04);
 
   /* ── Typography ── */
   --text-primary:   #F2F2F2;
@@ -88,6 +89,7 @@
   --accent-subtle: rgba(196, 30, 58, 0.08);
 
   --border: #DDDDDD;
+  --grid-line:     rgba(0, 0, 0, 0.07);
 
   --shadow-card:       3px 3px 0px #CCCCCC;
   --shadow-card-hover: 5px 5px 0px var(--cube-red);
@@ -115,6 +117,10 @@ body {
   line-height: 1.6;
   color: var(--text-primary);
   background-color: var(--bg-page);
+  background-image:
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: 60px 60px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   min-width: 320px;

@@ -1,5 +1,3 @@
-import { RubiksCube } from "../RubiksCube";
-
 const techPills = [
   "Node.js",
   "NestJS",
@@ -64,9 +62,6 @@ export function Hero() {
                   className="hero-avatar-img"
                   loading="eager"
                 />
-              </div>
-              <div className="hero-cube-badge" aria-hidden="true">
-                <RubiksCube />
               </div>
             </div>
             <span className="hero-bracket" aria-hidden="true">/&gt;</span>
