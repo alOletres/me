@@ -6,6 +6,7 @@ import {
   IconSun,
   IconMoon,
 } from "./Icons";
+import { RubiksCube } from "./RubiksCube";
 import { useTheme } from "../contexts/ThemeContext";
 
 interface SidebarProps {
@@ -52,17 +53,23 @@ export function Sidebar({ isOpen = false }: SidebarProps) {
     >
       {/* Avatar */}
       <div className="sidebar-avatar">
-        <div className="avatar-ring">
-          <img
-            src="/profile.jpg"
-            alt="Alejandro T. Oletres Jr."
-            className="avatar-photo"
-            width={88}
-            height={88}
-          />
-          <span className="status-dot" aria-label="Available for work" />
+        <p className="sidebar-avatar-label">// FRONT FACE</p>
+        <div className="sidebar-avatar-wrap">
+          <span className="sidebar-bracket sidebar-bracket--left" aria-hidden="true">&lt;</span>
+          <div className="sidebar-avatar-frame">
+            <img
+              src="/avatar.png"
+              alt="Alejandro T. Oletres Jr."
+              className="sidebar-avatar-img"
+              loading="eager"
+            />
+          </div>
+          <span className="sidebar-bracket sidebar-bracket--right" aria-hidden="true">/&gt;</span>
+          <div className="sidebar-cube-badge" aria-hidden="true">
+            <RubiksCube />
+          </div>
         </div>
-        <div>
+        <div className="sidebar-identity">
           <p className="sidebar-name">Alejandro T. Oletres Jr.</p>
           <p className="sidebar-title">Software Engineer</p>
         </div>

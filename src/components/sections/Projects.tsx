@@ -58,8 +58,9 @@ const projects: Project[] = [
 
   {
     name: "DTR Mobile App",
-    desc: "React Native app that records employee time-in/out by scanning a QR-coded ID, with on-site photo capture to verify attendance. Syncs to the HRMS backend.",
+    desc: "React Native app that records employee time-in/out by scanning a QR-coded ID, with on-site photo capture to verify attendance. Works offline and syncs to the HRMS backend when connectivity is restored.",
     stack: ["React Native", "NestJS", "TypeScript", "Redux"],
+    image: "/dtr-mobile-landing.jpg",
   },
   {
     name: "Delivery Cargo System",

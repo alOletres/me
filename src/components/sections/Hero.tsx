@@ -1,3 +1,5 @@
+import { RubiksCube } from "../RubiksCube";
+
 const techPills = [
   "Node.js",
   "NestJS",
@@ -8,31 +10,6 @@ const techPills = [
   "TypeScript",
   "Docker",
 ];
-
-const cubeFaces = [
-  { cls: "front", color: "var(--cube-red)" },
-  { cls: "back", color: "var(--cube-orange)" },
-  { cls: "left", color: "var(--cube-green)" },
-  { cls: "right", color: "var(--cube-blue)" },
-  { cls: "top", color: "var(--cube-yellow)" },
-  { cls: "bottom", color: "var(--cube-white)" },
-];
-
-function RubiksCube() {
-  return (
-    <div className="cube-scene" aria-hidden="true">
-      <div className="cube">
-        {cubeFaces.map(({ cls, color }) => (
-          <div key={cls} className={`cube-face cube-face--${cls}`}>
-            {Array.from({ length: 9 }).map((_, i) => (
-              <div key={i} className="sticker" style={{ background: color }} />
-            ))}
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
 
 export function Hero() {
   return (
@@ -78,17 +55,21 @@ export function Hero() {
         <div className="hero-visual" data-reveal>
           <p className="hero-avatar-label">// FRONT FACE</p>
           <div className="hero-avatar-wrap">
-            <div className="hero-avatar-frame">
-              <img
-                src="/avatar.png"
-                alt="Alejandro T. Oletres Jr., Software Engineer"
-                className="hero-avatar-img"
-                loading="eager"
-              />
+            <span className="hero-bracket" aria-hidden="true">&lt;</span>
+            <div className="hero-avatar-frame-wrap">
+              <div className="hero-avatar-frame">
+                <img
+                  src="/avatar.png"
+                  alt="Alejandro T. Oletres Jr., Software Engineer"
+                  className="hero-avatar-img"
+                  loading="eager"
+                />
+              </div>
+              <div className="hero-cube-badge" aria-hidden="true">
+                <RubiksCube />
+              </div>
             </div>
-            <div className="hero-cube-badge" aria-hidden="true">
-              <RubiksCube />
-            </div>
+            <span className="hero-bracket" aria-hidden="true">/&gt;</span>
           </div>
         </div>
       </div>
