@@ -21,7 +21,11 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   });
 
   useEffect(() => {
-    document.documentElement.dataset.theme = theme;
+    if (theme === "light") {
+      document.documentElement.dataset.theme = "light";
+    } else {
+      delete document.documentElement.dataset.theme;
+    }
     localStorage.setItem("theme", theme);
   }, [theme]);
 

@@ -1,65 +1,177 @@
-import {
-  IconServer,
-  IconLayout,
-  IconSmartphone,
-  IconLink,
-  IconCode,
-  IconCpu,
-} from '../Icons';
-import type { ReactNode } from 'react';
+import type React from 'react';
+import { useState } from 'react';
 
-interface Service {
-  icon: ReactNode;
-  title: string;
-  desc: string;
+interface Skill {
+  name: string;
+  pct: number;
 }
 
-const services: Service[] = [
+interface SkillCategory {
+  faceLabel: string;
+  color: string;
+  title: string;
+  skills: Skill[];
+}
+
+const categories: SkillCategory[] = [
   {
-    icon: <IconServer size={20} />,
-    title: 'Backend Development',
-    desc: 'Building robust server-side systems, REST APIs, and business logic with Node.js, PHP/Laravel, and Python.',
+    faceLabel: 'FRONT FACE',
+    color: 'var(--cube-red)',
+    title: 'Backend',
+    skills: [
+      { name: 'Node.js',    pct: 90 },
+      { name: 'NestJS',     pct: 88 },
+      { name: 'Express.js', pct: 85 },
+      { name: 'TypeScript', pct: 92 },
+      { name: 'REST APIs',  pct: 90 },
+    ],
   },
   {
-    icon: <IconLayout size={20} />,
-    title: 'Frontend Development',
-    desc: 'Crafting responsive, performant web interfaces with React, Next.js, and TypeScript — from landing pages to complex SPAs.',
+    faceLabel: 'RIGHT FACE',
+    color: 'var(--cube-orange)',
+    title: 'Frontend',
+    skills: [
+      { name: 'React',      pct: 90 },
+      { name: 'Next.js',    pct: 82 },
+      { name: 'Angular',    pct: 80 },
+      { name: 'JavaScript', pct: 88 },
+      { name: 'HTML / CSS', pct: 85 },
+    ],
   },
   {
-    icon: <IconSmartphone size={20} />,
-    title: 'Mobile Apps',
-    desc: 'Developing cross-platform mobile applications using React Native and Expo, deployable to both iOS and Android.',
+    faceLabel: 'TOP FACE',
+    color: 'var(--cube-yellow)',
+    title: 'Mobile',
+    skills: [
+      { name: 'React Native', pct: 80 },
+      { name: 'Redux',        pct: 75 },
+      { name: 'Expo',         pct: 72 },
+    ],
   },
   {
-    icon: <IconLink size={20} />,
-    title: 'API Integration',
-    desc: 'Connecting payment gateways, third-party services, and external APIs into cohesive, reliable systems.',
+    faceLabel: 'LEFT FACE',
+    color: 'var(--cube-green)',
+    title: 'Database',
+    skills: [
+      { name: 'MySQL',      pct: 82 },
+      { name: 'PostgreSQL', pct: 75 },
+      { name: 'Firebase',   pct: 78 },
+      { name: 'TypeORM',    pct: 70 },
+    ],
   },
   {
-    icon: <IconCode size={20} />,
-    title: 'DevOps & Deployment',
-    desc: 'Setting up CI/CD pipelines, Docker containers, and deploying applications to cloud platforms.',
+    faceLabel: 'BOTTOM FACE',
+    color: 'var(--cube-blue)',
+    title: 'DevOps',
+    skills: [
+      { name: 'Docker',      pct: 75 },
+      { name: 'CI/CD',       pct: 68 },
+      { name: 'Git & GitHub', pct: 90 },
+      { name: 'Linux / CLI', pct: 70 },
+    ],
   },
   {
-    icon: <IconCpu size={20} />,
-    title: 'AI-Assisted Engineering',
-    desc: 'Leveraging AI tools like Claude to accelerate development cycles, improve code quality, and solve complex problems faster.',
+    faceLabel: 'BACK FACE',
+    color: 'var(--cube-white)',
+    title: 'Tools & AI',
+    skills: [
+      { name: 'Socket.IO',    pct: 80 },
+      { name: 'Tailwind CSS', pct: 85 },
+      { name: 'MUI / AM',     pct: 78 },
+      { name: 'AI-Assisted',  pct: 85 },
+    ],
   },
 ];
 
 export function WhatIDo() {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const active = categories[activeIndex];
+
   return (
     <section className="section" id="what-i-do" aria-labelledby="what-i-do-heading" data-reveal>
-      <p className="section-label">Services</p>
-      <h2 className="section-title" id="what-i-do-heading">What I Do</h2>
-      <div className="cards-grid" data-reveal-stagger>
-        {services.map(({ icon, title, desc }) => (
-          <article key={title} className="service-card">
-            <div className="service-icon" aria-hidden="true">{icon}</div>
-            <h3 className="service-title">{title}</h3>
-            <p className="service-desc">{desc}</p>
-          </article>
-        ))}
+      <div className="section-inner">
+      <div className="section-header" style={{ '--section-color': 'var(--cube-orange)' } as React.CSSProperties}>
+        <p className="section-label">Skills</p>
+        <h2 className="section-title" id="what-i-do-heading">What I Do</h2>
+      </div>
+
+      <div className="skills-panel">
+        {/* Tab column */}
+        <div className="skills-tabs" role="tablist" aria-label="Skill categories">
+          {categories.map((cat, i) => (
+            <button
+              key={cat.title}
+              role="tab"
+              aria-selected={i === activeIndex}
+              aria-controls="skills-content"
+              className={`skills-tab${i === activeIndex ? ' is-active' : ''}`}
+              style={{ '--tab-color': cat.color } as React.CSSProperties}
+              onClick={() => setActiveIndex(i)}
+            >
+              <span
+                className="skills-tab-dot"
+                style={{ background: cat.color }}
+                aria-hidden="true"
+              />
+              <span className="skills-tab-face">{cat.faceLabel}</span>
+              <span className="skills-tab-title">{cat.title}</span>
+            </button>
+          ))}
+        </div>
+
+        {/* Skills content */}
+        <div
+          id="skills-content"
+          role="tabpanel"
+          className="skills-bars"
+          aria-label={`${active.title} skills`}
+        >
+          <div
+            className="skills-bars-header"
+            style={{ '--tab-color': active.color } as React.CSSProperties}
+          >
+            <span
+              className="skills-bars-face"
+              style={{ color: active.color }}
+            >
+              {active.faceLabel}
+            </span>
+            <h3 className="skills-bars-title">{active.title}</h3>
+          </div>
+
+          <ul className="skills-list">
+            {active.skills.map(({ name, pct }) => (
+              <li key={name} className="skill-row">
+                <div className="skill-row-meta">
+                  <span className="skill-name">{name}</span>
+                  <span
+                    className="skill-pct"
+                    style={{ color: active.color }}
+                  >
+                    {pct}%
+                  </span>
+                </div>
+                <div
+                  className="skill-bar-track"
+                  role="progressbar"
+                  aria-valuenow={pct}
+                  aria-valuemin={0}
+                  aria-valuemax={100}
+                  aria-label={`${name}: ${pct}%`}
+                >
+                  <div
+                    className="skill-bar-fill"
+                    style={{
+                      width: `${pct}%`,
+                      background: active.color,
+                    }}
+                  />
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
       </div>
     </section>
   );

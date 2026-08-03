@@ -1,88 +1,97 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Space+Mono:wght@400;700&family=Poppins:wght@400;500;600;700&display=swap');
 
 /* =========================================================
-   DESIGN TOKENS
+   DESIGN TOKENS — Dark-first (Rubik's Cube theme)
    ========================================================= */
 :root {
-  --font-heading: 'Poppins', system-ui, sans-serif;
+  --font-heading: 'Barlow Condensed', system-ui, sans-serif;
   --font-body: 'Poppins', system-ui, sans-serif;
+  --font-mono: 'Space Mono', monospace;
 
-  /* Light mode colors */
-  --bg-page: #FAFAFA;
-  --bg-sidebar: #180810;
-  --bg-card: #FFFFFF;
-  --bg-card-hover: #F4F4F5;
-  --bg-tag: #F4F4F5;
+  /* ── Rubik's cube face palette ── */
+  --cube-red:    #C41E3A;
+  --cube-orange: #FF5800;
+  --cube-yellow: #FFD500;
+  --cube-green:  #009B48;
+  --cube-blue:   #0051A2;
+  --cube-white:  #F2F2F2;
 
-  --text-primary: #09090B;
-  --text-secondary: #52525B;
-  --text-muted: #A1A1AA;
+  /* ── Dark-first backgrounds ── */
+  --bg-page:       #0D0D0D;
+  --bg-card:       #1A1A1A;
+  --bg-card-hover: #242424;
+  --bg-tag:        #242424;
+  --bg-topnav:     #111111;
 
-  --sidebar-text: #FFFFFF;
-  --sidebar-muted: rgba(255, 255, 255, 0.55);
-  --sidebar-border: rgba(255, 255, 255, 0.08);
+  /* ── Typography ── */
+  --text-primary:   #F2F2F2;
+  --text-secondary: #A0A0A0;
+  --text-muted:     #666666;
 
-  --accent: #BE1B3A;
-  --accent-hover: #9B1530;
-  --accent-subtle: rgba(190, 27, 58, 0.09);
+  /* ── Accent (default = cube-red) ── */
+  --accent:        var(--cube-red);
+  --accent-hover:  #E0213F;
+  --accent-subtle: rgba(196, 30, 58, 0.12);
 
-  --border: #E4E4E7;
-  --success: #16A34A;
+  /* ── Borders ── */
+  --border: #2A2A2A;
 
-  --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.07), 0 4px 12px rgba(0, 0, 0, 0.04);
-  --shadow-card-hover: 0 4px 20px rgba(0, 0, 0, 0.10), 0 1px 4px rgba(0, 0, 0, 0.06);
-  --shadow-sidebar: 4px 0 24px rgba(0, 0, 0, 0.12);
+  /* ── Shadows (hard-edged cube style) ── */
+  --shadow-card:       3px 3px 0px var(--border);
+  --shadow-card-hover: 5px 5px 0px var(--cube-red);
+  --shadow-topnav:     0 2px 0px var(--border);
 
-  /* Spacing */
-  --sp-1: 4px;
-  --sp-2: 8px;
-  --sp-3: 12px;
-  --sp-4: 16px;
-  --sp-5: 20px;
-  --sp-6: 24px;
-  --sp-8: 32px;
+  /* ── Spacing ── */
+  --sp-1:  4px;
+  --sp-2:  8px;
+  --sp-3:  12px;
+  --sp-4:  16px;
+  --sp-5:  20px;
+  --sp-6:  24px;
+  --sp-8:  32px;
   --sp-10: 40px;
   --sp-12: 48px;
   --sp-16: 64px;
 
-  /* Border radii */
-  --r-sm: 4px;
-  --r-md: 8px;
-  --r-lg: 12px;
+  /* ── Border radii (cube = sharp corners by default) ── */
+  --r-sm:   2px;
+  --r-md:   4px;
+  --r-lg:   6px;
   --r-full: 9999px;
 
-  /* Layout */
-  --sidebar-w: 280px;
-  --mobile-nav-h: 60px;
+  /* ── Layout ── */
+  --topnav-h:     64px;
+  --mobile-nav-h: 56px;
 
-  /* Transitions */
-  --t-fast: 150ms ease;
+  /* ── Transitions ── */
+  --t-fast: 120ms ease;
   --t-base: 200ms ease;
   --t-slow: 300ms ease;
 }
 
 /* =========================================================
-   DARK MODE
+   LIGHT MODE OVERRIDE
    ========================================================= */
-[data-theme="dark"] {
-  --bg-page: #0A0308;
-  --bg-card: #180810;
-  --bg-card-hover: #240F1A;
-  --bg-tag: #240F1A;
+[data-theme="light"] {
+  --bg-page:       #F5F5F5;
+  --bg-card:       #FFFFFF;
+  --bg-card-hover: #F0F0F0;
+  --bg-tag:        #EFEFEF;
+  --bg-topnav:     #FFFFFF;
 
-  --text-primary: #FAFAFA;
-  --text-secondary: #A1A1AA;
-  --text-muted: #71717A;
+  --text-primary:   #111111;
+  --text-secondary: #444444;
+  --text-muted:     #888888;
 
-  --accent: #F43F5E;
-  --accent-hover: #FB7185;
-  --accent-subtle: rgba(244, 63, 94, 0.12);
+  --accent:        var(--cube-red);
+  --accent-hover:  #E0213F;
+  --accent-subtle: rgba(196, 30, 58, 0.08);
 
-  --border: #2D0E1C;
+  --border: #DDDDDD;
 
-  --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.3), 0 4px 12px rgba(0, 0, 0, 0.2);
-  --shadow-card-hover: 0 4px 20px rgba(0, 0, 0, 0.4), 0 1px 4px rgba(0, 0, 0, 0.25);
-  --shadow-sidebar: 4px 0 24px rgba(0, 0, 0, 0.4);
+  --shadow-card:       3px 3px 0px #CCCCCC;
+  --shadow-card-hover: 5px 5px 0px var(--cube-red);
+  --shadow-topnav:     0 2px 0px #DDDDDD;
 }
 
 /* =========================================================
@@ -97,6 +106,7 @@
 html {
   font-size: 16px;
   scroll-behavior: smooth;
+  color-scheme: dark;
 }
 
 body {
@@ -170,7 +180,7 @@ ul, ol {
 [id="projects"],
 [id="education"],
 [id="contact"] {
-  scroll-margin-top: calc(var(--mobile-nav-h) + var(--sp-4));
+  scroll-margin-top: calc(var(--topnav-h) + var(--sp-4));
 }
 
 /* =========================================================
@@ -212,6 +222,7 @@ ul, ol {
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
 
@@ -219,5 +230,14 @@ ul, ol {
   [data-reveal-stagger] > * {
     opacity: 1;
     transform: none;
+  }
+
+  .cube {
+    animation: none;
+    transform: rotateX(-22deg) rotateY(-30deg);
+  }
+
+  .skill-bar-fill {
+    transition: none;
   }
 }

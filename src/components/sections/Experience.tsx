@@ -1,3 +1,5 @@
+import type React from 'react';
+
 interface Experience {
   date: string;
   company: string;
@@ -51,8 +53,11 @@ const experiences: Experience[] = [
 export function Experience() {
   return (
     <section className="section" id="experience" aria-labelledby="experience-heading" data-reveal>
-      <p className="section-label">Career</p>
-      <h2 className="section-title" id="experience-heading">Experience</h2>
+      <div className="section-inner">
+      <div className="section-header" style={{ '--section-color': 'var(--cube-yellow)' } as React.CSSProperties}>
+        <p className="section-label">Career</p>
+        <h2 className="section-title" id="experience-heading">Experience</h2>
+      </div>
       <ol className="timeline" aria-label="Work history" data-reveal-stagger>
         {experiences.map(({ date, company, location, role, type, bullets }) => (
           <li key={company} className="timeline-item">
@@ -76,6 +81,7 @@ export function Experience() {
           </li>
         ))}
       </ol>
+      </div>
     </section>
   );
 }
