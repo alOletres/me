@@ -29,6 +29,13 @@ export function TopNav() {
         <div className="topnav-inner">
           {/* Brand */}
           <a href="#hero" className="topnav-brand" onClick={closeMenu} aria-label="Back to top">
+            {/* Stands in for the hero portrait, which is hidden on small screens */}
+            <img
+              src="/avatar.png"
+              alt=""
+              className="topnav-avatar"
+              aria-hidden="true"
+            />
             <span className="topnav-brand-cube">
               <span style={{ color: 'var(--cube-red)' }}>D</span>
               <span style={{ color: 'var(--cube-orange)' }}>E</span>

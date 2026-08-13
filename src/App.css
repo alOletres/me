@@ -153,6 +153,19 @@
   display: inline-flex;
 }
 
+/* Shown only once the hero portrait drops out (see RESPONSIVE, 640px) */
+.topnav-avatar {
+  display: none;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: top;
+  margin-right: var(--sp-2);
+  border: 2px solid var(--cube-red);
+  flex-shrink: 0;
+}
+
 .topnav-brand-dot {
   color: var(--text-muted);
   margin: 0 1px;
@@ -1514,45 +1527,14 @@
     justify-content: center;
   }
 
-  .hero-avatar-frame {
-    width: 160px;
-    height: 213px;
-    box-shadow: 4px 4px 0 var(--cube-red);
-  }
-
-  .hero-avatar-wrap {
-    margin-bottom: 20px;
-  }
-
-  .hero-bracket {
+  /* Portrait moves into the top nav to buy back vertical space */
+  .hero-visual {
     display: none;
   }
 
-  .hero-cube-badge {
-    bottom: -12px;
-    left: -12px;
+  .topnav-avatar {
+    display: block;
   }
-
-  .hero-cube-badge .cube-scene {
-    width: 62px;
-    height: 62px;
-    perspective: 220px;
-  }
-
-  .hero-cube-badge .cube-face {
-    width: 62px;
-    height: 62px;
-    gap: 1.5px;
-    padding: 1.5px;
-    border-width: 1px;
-  }
-
-  .hero-cube-badge .cube-face--front  { transform: rotateY(0deg)    translateZ(31px); }
-  .hero-cube-badge .cube-face--back   { transform: rotateY(180deg)  translateZ(31px); }
-  .hero-cube-badge .cube-face--left   { transform: rotateY(-90deg)  translateZ(31px); }
-  .hero-cube-badge .cube-face--right  { transform: rotateY(90deg)   translateZ(31px); }
-  .hero-cube-badge .cube-face--top    { transform: rotateX(90deg)   translateZ(31px); }
-  .hero-cube-badge .cube-face--bottom { transform: rotateX(-90deg)  translateZ(31px); }
 
   .hero-tech-row {
     margin-top: var(--sp-8);

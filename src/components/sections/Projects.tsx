@@ -7,6 +7,8 @@ interface Project {
   note?: string;
   image?: string;
   link?: string;
+  /** Tag text for the link chip. Defaults to "Live". */
+  linkLabel?: string;
 }
 
 const CUBE_FACES = [
@@ -69,9 +71,26 @@ const projects: Project[] = [
   },
 
   {
-    name: "White House Apartment System",
-    desc: "Apartment-management app tracking rentals and room occupancy, with SMS notifications for payment due-date reminders for each tenant.",
-    stack: ["Next.js", "NestJS", "TypeScript", "MUI", "RTK Query"],
+    name: "NetSuite Proof of Delivery",
+    desc: "Proof-of-delivery capture for field deliveries — drivers photograph the store, truck, and unloaded goods, collect the receiver's signature, and stamp the GPS location on site. Each visit posts back to the NetSuite transaction record as a Proof of Delivery subtab so operations can verify a drop without chasing paperwork.",
+    stack: ["NetSuite", "SuiteScript"],
+    image: "/netsuite-pod-landing.png",
+  },
+
+  {
+    name: "User Management System",
+    desc: "Centralized user management that grants one set of credentials access to every company system, with per-user route permissions assigned from the admin side.",
+    stack: ["NestJS", "TypeScript", "MySQL"],
+  },
+
+  {
+    name: "Raket — Cross-Border Payments",
+    desc: "Hackathon build for Filipino freelancers getting paid from abroad. Gemini parses an uploaded quote into a structured invoice — client, line items, rates, and dates — then clients pay by card, Morph settles on-chain in seconds, and pesos land in GCash with a verifiable receipt and BIR-ready tax records.",
+    stack: ["Next.js", "TypeScript", "Turborepo", "Gemini API", "Morph"],
+    note: "Hackathon · TeamPagadian",
+    image: "/raket-landing.png",
+    link: "https://github.com/LodiAniez/teampagadian-hackathon",
+    linkLabel: "Repo",
   },
 ];
 
@@ -97,7 +116,7 @@ export function Projects() {
         </div>
 
         <div className="projects-grid" data-reveal-stagger>
-          {projects.map(({ name, desc, stack, note, image, link }, index) => {
+          {projects.map(({ name, desc, stack, note, image, link, linkLabel }, index) => {
             const face = CUBE_FACES[index % CUBE_FACES.length];
             const num = String(index + 1).padStart(2, "0");
 
@@ -144,7 +163,9 @@ export function Projects() {
                     </span>
                   ))}
                   {link && (
-                    <span className="stack-tag project-link-tag">↗ Live</span>
+                    <span className="stack-tag project-link-tag">
+                      ↗ {linkLabel ?? "Live"}
+                    </span>
                   )}
                 </div>
               </>
