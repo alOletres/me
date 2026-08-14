@@ -1,3 +1,5 @@
+import { asset } from '../../lib/asset';
+
 const techPills = [
   "Node.js",
   "NestJS",
@@ -57,7 +59,7 @@ export function Hero() {
             <div className="hero-avatar-frame-wrap">
               <div className="hero-avatar-frame">
                 <img
-                  src="/avatar.png"
+                  src={asset('avatar.png')}
                   alt="Alejandro T. Oletres Jr., Software Engineer"
                   className="hero-avatar-img"
                   loading="eager"

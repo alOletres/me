@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { IconDownload, IconSun, IconMoon, IconMenu, IconX } from './Icons';
 import { useTheme } from '../contexts/ThemeContext';
+import { asset } from '../lib/asset';
 
 const navLinks = [
   { label: 'Hero',       href: '#hero',       color: 'var(--cube-red)' },
@@ -32,7 +33,7 @@ export function TopNav() {
           <a href="#hero" className="topnav-brand" onClick={closeMenu} aria-label="Back to top">
             {/* Stands in for the hero portrait, which is hidden on small screens */}
             <img
-              src="/avatar.png"
+              src={asset('avatar.png')}
               alt=""
               className="topnav-avatar"
               aria-hidden="true"
@@ -76,7 +77,7 @@ export function TopNav() {
             </button>
 
             <a
-              href="/resume.pdf"
+              href={asset('resume.pdf')}
               download="Alejandro_Oletres_CV.pdf"
               className="topnav-cv-btn"
             >
@@ -119,7 +120,7 @@ export function TopNav() {
         ))}
         <div className="topnav-mobile-footer">
           <a
-            href="/resume.pdf"
+            href={asset('resume.pdf')}
             download="Alejandro_Oletres_CV.pdf"
             className="topnav-cv-btn topnav-cv-btn--full"
             onClick={closeMenu}

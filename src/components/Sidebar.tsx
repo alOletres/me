@@ -8,6 +8,7 @@ import {
 } from "./Icons";
 import { RubiksCube } from "./RubiksCube";
 import { useTheme } from "../contexts/ThemeContext";
+import { asset } from "../lib/asset";
 
 interface SidebarProps {
   isOpen?: boolean;
@@ -58,7 +59,7 @@ export function Sidebar({ isOpen = false }: SidebarProps) {
           <span className="sidebar-bracket sidebar-bracket--left" aria-hidden="true">&lt;</span>
           <div className="sidebar-avatar-frame">
             <img
-              src="/avatar.png"
+              src={asset("avatar.png")}
               alt="Alejandro T. Oletres Jr."
               className="sidebar-avatar-img"
               loading="eager"
@@ -172,7 +173,7 @@ export function Sidebar({ isOpen = false }: SidebarProps) {
       {/* Download CV */}
       <div className="sidebar-cv">
         <a
-          href="/resume.pdf"
+          href={asset("resume.pdf")}
           download="Alejandro_Oletres_CV.pdf"
           className="btn-download"
         >
