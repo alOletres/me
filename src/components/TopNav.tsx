@@ -6,6 +6,7 @@ const navLinks = [
   { label: 'Hero',       href: '#hero',       color: 'var(--cube-red)' },
   { label: 'What I Do',  href: '#what-i-do',  color: 'var(--cube-orange)' },
   { label: 'Experience', href: '#experience', color: 'var(--cube-yellow)' },
+  { label: 'Awards',     href: '#achievements', color: 'var(--cube-orange)' },
   { label: 'Projects',   href: '#projects',   color: 'var(--cube-green)' },
   { label: 'Education',  href: '#education',  color: 'var(--cube-blue)' },
   { label: 'Contact',    href: '#contact',    color: 'var(--cube-white)' },

@@ -23,11 +23,13 @@ There is no test framework in this project. `npm run build` (which type-checks f
 
 ```
 RootLayout (routes/+layout.tsx)
-  └── index → Home (routes/index.tsx) — renders all six sections in order
+  └── index → Home (routes/index.tsx) — renders all seven sections in order
   └── *     → NotFound (unreachable in practice, since nothing navigates)
 ```
 
-`Home` composes `Hero → WhatIDo → Experience → Projects → Education → Contact` from `src/components/sections/`. Navigation is anchor-based (`#hero`, `#what-i-do`, …), never `<Link>`.
+`Home` composes `Hero → WhatIDo → Experience → Achievements → Projects → Education → Contact` from `src/components/sections/`. Navigation is anchor-based (`#hero`, `#what-i-do`, …), never `<Link>`.
+
+There are seven sections but only six cube faces, so `Achievements` reuses `--cube-orange` (shared with What I Do).
 
 **Content is hardcoded** as typed arrays at the top of each section component (e.g. `projects: Project[]` in `sections/Projects.tsx`). There is no CMS or data layer — editing portfolio content means editing those arrays.
 
@@ -58,6 +60,26 @@ Design tokens (fonts, Rubik's-cube palette, spacing, radii, shadows, transitions
 The visual motif is a Rubik's cube: each nav link and section maps to a face color (`--cube-red`, `--cube-orange`, `--cube-yellow`, `--cube-green`, `--cube-blue`, `--cube-white`), and per-element color is passed via a `--link-color` custom property set through an inline `style` prop. Shadows are hard-edged offsets (`3px 3px 0px`), not blurs.
 
 Icons are hand-written inline SVG components in `src/components/Icons.tsx` — no icon library.
+
+### The downloadable CV
+
+`public/resume.pdf` (the top nav's "Download CV") is **generated** — don't hand-edit it. Source of truth is
+`docs/resume/resume.html`; rebuild with `docs/resume/build.sh`, which renders it via headless Chrome and
+overwrites `public/resume.pdf`.
+
+The original PDF came out of LibreOffice Writer and its `.odt` was never committed, so `resume.html` is a
+reconstruction of that layout: US Letter, 63pt side margins, Carlito (the Calibri-metric font LibreOffice
+substituted). The four Carlito faces live in `docs/resume/assets/` so the render is reproducible — the build
+does not download anything. `docs/resume/resume.previous.pdf` is the last LibreOffice-produced version, kept
+for comparison.
+
+Two things that will bite you when editing it:
+
+- Chrome's **new** headless mode hangs on `--print-to-pdf`; `build.sh` uses `--headless=old` deliberately.
+- Do not put `break-inside: avoid` on `.job`. The first job carries six project sub-blocks, so the whole thing
+  jumps to the next page and leaves page 1 half empty.
+
+Keep it to two pages — the spacing values in the stylesheet are tuned so it just fits.
 
 ## Conventions
 

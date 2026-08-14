@@ -1079,6 +1079,112 @@
 }
 
 /* =========================================================
+   ACHIEVEMENTS
+   ========================================================= */
+.achievements-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: var(--sp-5);
+  max-width: 860px;
+}
+
+.achievement-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--cube-orange);
+  border-radius: var(--r-sm);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-card);
+  transition: transform var(--t-fast), box-shadow var(--t-fast);
+}
+
+.achievement-card:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 5px 5px 0px var(--cube-orange);
+}
+
+/* Certificate scan — cropped above the signature line before it ever
+   reached public/, so no signature or signatory name is published. */
+.achievement-cert {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-bottom: 1px solid var(--border);
+}
+
+.achievement-content {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--sp-5);
+  padding: var(--sp-5) var(--sp-6);
+}
+
+.achievement-icon {
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  border-radius: var(--r-sm);
+  background: rgba(255, 88, 0, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--cube-orange);
+}
+
+.achievement-date {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--cube-orange);
+  letter-spacing: 0.06em;
+  margin-bottom: var(--sp-1);
+}
+
+.achievement-title {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  color: var(--text-primary);
+  margin-bottom: var(--sp-1);
+}
+
+.achievement-issuer {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  margin-bottom: var(--sp-3);
+}
+
+.achievement-role {
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+.achievement-citation {
+  font-size: 0.85rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+}
+
+.achievement-badge {
+  display: inline-block;
+  margin-top: var(--sp-3);
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: var(--r-sm);
+  background: rgba(255, 88, 0, 0.1);
+  color: var(--cube-orange);
+  border: 1px solid rgba(255, 88, 0, 0.3);
+}
+
+/* =========================================================
    PROJECTS
    ========================================================= */
 .projects-grid {
@@ -1503,11 +1609,18 @@
   }
 
   .cards-grid,
-  .projects-grid {
+  .projects-grid,
+  .achievements-grid {
     grid-template-columns: 1fr;
   }
 
   .education-card {
+    flex-direction: column;
+    gap: var(--sp-4);
+    padding: var(--sp-5);
+  }
+
+  .achievement-content {
     flex-direction: column;
     gap: var(--sp-4);
     padding: var(--sp-5);

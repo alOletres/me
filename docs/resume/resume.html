@@ -1,0 +1,405 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Alejandro T. Oletres Jr. - Software Engineer Resume</title>
+<style>
+/* =========================================================
+   Print geometry — matches the original LibreOffice output:
+   US Letter, 63pt side margins (486pt content width).
+   ========================================================= */
+@page {
+  size: 8.5in 11in;
+  margin: 26pt 63pt 26pt 63pt;
+}
+
+@font-face { font-family: Carlito; src: url('assets/Carlito-Regular.ttf');    font-weight: 400; font-style: normal; }
+@font-face { font-family: Carlito; src: url('assets/Carlito-Bold.ttf');       font-weight: 700; font-style: normal; }
+@font-face { font-family: Carlito; src: url('assets/Carlito-Italic.ttf');     font-weight: 400; font-style: italic; }
+@font-face { font-family: Carlito; src: url('assets/Carlito-BoldItalic.ttf'); font-weight: 700; font-style: italic; }
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body {
+  font-family: Carlito, Calibri, Arial, sans-serif;
+  font-size: 10.5pt;
+  line-height: 12.5pt;
+  color: #595959;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+/* ── Header ───────────────────────────────────────────── */
+.header { position: relative; }
+
+.name {
+  font-size: 20pt;
+  font-weight: 700;
+  line-height: 22pt;
+  color: #1A1A1A;
+}
+
+.subtitle {
+  font-size: 13pt;
+  line-height: 18.7pt;
+  letter-spacing: 1.7pt;
+  color: #2E74B5;
+}
+
+.contact {
+  font-size: 10pt;
+  line-height: 13.7pt;
+  margin-top: 6.3pt;
+}
+
+.contact a { color: #2E74B5; text-decoration: none; }
+.contact .sep { color: #BBBBBB; padding: 0 6pt; }
+
+.photo {
+  position: absolute;
+  top: -2pt;
+  right: 18pt;
+  width: 84pt;
+  height: 100.5pt;
+  object-fit: cover;
+}
+
+.header-rule {
+  border-top: 1.75pt solid #1F4E79;
+  margin-top: 23.3pt;
+}
+
+/* ── Section headings ─────────────────────────────────── */
+.sec {
+  font-size: 12pt;
+  font-weight: 700;
+  line-height: 12pt;
+  letter-spacing: 1.4pt;
+  text-transform: uppercase;
+  color: #1F4E79;
+  border-bottom: 1pt solid #1F4E79;
+  padding-bottom: 3.9pt;
+  margin-top: 9pt;
+  break-after: avoid;
+}
+
+.sec:first-of-type { margin-top: 10.1pt; }
+
+.sec + * { margin-top: 6.5pt; }
+
+/* ── Body copy ────────────────────────────────────────── */
+p { line-height: 12.5pt; }
+
+.skills-line { line-height: 13.6pt; }
+.skills-line b { color: #1A1A1A; }
+.skills-line b::after { content: '  '; white-space: pre; }
+
+/* ── Experience ───────────────────────────────────────── */
+/* No break-inside:avoid here — the first job carries six project blocks and
+   would jump wholesale to the next page, leaving page 1 half empty. Keeping
+   breaks off the head/org lines is enough to avoid an orphaned job title. */
+.job { margin-top: 7pt; }
+
+.job-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  line-height: 13.7pt;
+  break-after: avoid;
+}
+
+.job-title {
+  font-size: 11.5pt;
+  font-weight: 700;
+  color: #1A1A1A;
+}
+
+.job-date { font-size: 10pt; }
+
+.job-org {
+  font-size: 10.5pt;
+  font-weight: 700;
+  line-height: 13.7pt;
+  color: #2E74B5;
+  break-after: avoid;
+}
+
+ul.bullets { list-style: none; margin-top: 1.5pt; }
+
+ul.bullets li {
+  position: relative;
+  padding-left: 18pt;
+  line-height: 12.5pt;
+  margin-top: 1.2pt;
+}
+
+ul.bullets li::before {
+  content: '\2022';
+  position: absolute;
+  left: 8pt;
+}
+
+.key-projects { margin-top: 1pt; }
+
+/* ── Project sub-blocks (indented 18pt, 10pt copy) ────── */
+.proj {
+  margin-left: 18pt;
+  margin-top: 2pt;
+  break-inside: avoid;
+}
+
+.proj-name {
+  font-size: 10.5pt;
+  font-weight: 700;
+  line-height: 13pt;
+  color: #2E74B5;
+}
+
+.proj p {
+  font-size: 10pt;
+  line-height: 11.6pt;
+}
+
+.meta {
+  font-size: 10pt;
+  line-height: 12.5pt;
+  font-style: italic;
+}
+
+.meta b { font-weight: 700; font-style: italic; }
+.meta .gap { padding-left: 14pt; }
+
+/* ── Awards ───────────────────────────────────────────── */
+.award { margin-top: 4pt; break-inside: avoid; }
+
+.award-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  line-height: 13.4pt;
+}
+
+.award-title {
+  font-size: 10.5pt;
+  font-weight: 700;
+  color: #1A1A1A;
+}
+
+.award-title .issuer { color: #2E74B5; }
+
+.award-date { font-size: 10pt; }
+
+.award p {
+  font-size: 10pt;
+  line-height: 11.9pt;
+}
+
+/* ── Education ────────────────────────────────────────── */
+.edu-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  line-height: 13.4pt;
+}
+
+.edu-degree { font-size: 11pt; font-weight: 700; color: #1A1A1A; }
+.edu-date { font-size: 10pt; }
+.edu-school { font-size: 10.5pt; line-height: 13.4pt; }
+
+/* ── Character references (two columns) ───────────────── */
+.refs { display: flex; margin-top: 5pt; break-inside: avoid; }
+.refs > div { width: 240pt; break-inside: avoid; }
+.ref-name { font-size: 10.5pt; font-weight: 700; line-height: 12.9pt; color: #1A1A1A; }
+.ref-role { font-size: 10pt; font-style: italic; line-height: 12.6pt; }
+.ref-phone { font-size: 10pt; line-height: 12.6pt; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <img class="photo" src="assets/photo.jpg" alt="">
+  <div class="name">ALEJANDRO T. OLETRES JR.</div>
+  <div class="subtitle">Senior Software Engineer</div>
+  <div class="contact">
+    Molave, Zamboanga del Sur, Philippines<br>
+    +63 951 489 8662 <span class="sep">|</span> <a href="mailto:alejandrooletres@gmail.com">alejandrooletres@gmail.com</a><br>
+    <a href="https://github.com/alOletres">github.com/alOletres</a>
+  </div>
+  <div class="header-rule"></div>
+</div>
+
+<h2 class="sec">Professional Summary</h2>
+<p>Senior Software Engineer with over five years of professional experience designing, building, and deploying
+full-stack web and mobile applications across the JavaScript and TypeScript ecosystem. Proficient in Node.js,
+NestJS, Express, Angular, React, Next.js, and React Native, with practical experience in REST API integration,
+real-time data handling, relational databases, and Dockerized deployments. Comfortable owning features end to
+end&mdash;from planning and documentation through coding, testing, and release&mdash;and collaborating closely
+with teammates to deliver maintainable, scalable systems.</p>
+
+<h2 class="sec">Technical Skills</h2>
+<div>
+  <p class="skills-line"><b>Backend:</b>Node.js, TypeScript, NestJS, Express.js, REST APIs, SQL / MySQL</p>
+  <p class="skills-line"><b>Frontend:</b>Angular (RxJS, NgRx), React, Next.js, JavaScript, HTML, CSS</p>
+  <p class="skills-line"><b>Mobile:</b>React Native</p>
+  <p class="skills-line"><b>UI / Styling:</b>Tailwind CSS, Angular Material, MUI, Bootstrap</p>
+  <p class="skills-line"><b>State Management:</b>Redux, RTK Query, NgRx, NGRX Store</p>
+  <p class="skills-line"><b>Tools &amp; DevOps:</b>Docker, CI/CD, Git / GitHub, Firebase, Socket.IO, Redux Toolkit</p>
+  <p class="skills-line"><b>ERP / Business Systems:</b>NetSuite SuiteScript (server-side scripting, workflow automation)</p>
+  <p class="skills-line"><b>AI-Assisted Development:</b>Claude &mdash; used as a daily tool for faster prototyping, debugging, and code review</p>
+</div>
+
+<h2 class="sec">Professional Experience</h2>
+<div class="job">
+  <div class="job-head">
+    <span class="job-title">Senior Software Engineer</span>
+    <span class="job-date">2021 &ndash; Present</span>
+  </div>
+  <div class="job-org">Molave Youngs Milling Corp</div>
+  <ul class="bullets">
+    <li>Build and maintain web applications with Angular and React, mobile apps with React Native, and backend
+      services with Node.js and NestJS.</li>
+    <li>Coordinate a small team of two developers across the full software lifecycle&mdash;planning,
+      documentation, coding, testing, and deployment of the company's core software.</li>
+  </ul>
+  <p class="key-projects">Key projects:</p>
+
+  <div class="proj">
+    <div class="proj-name">Procurement System</div>
+    <p>Internal procurement app that lets offices submit item requests, generates purchase orders, and lets admins
+      select and award suppliers with dynamic quantities and rates.</p>
+    <p>Built dynamic table and input components, integrated Socket.IO for real-time updates across client and
+      server, and used MySQL triggers/events to maintain a full before-and-after audit history of changed records.</p>
+    <p class="meta"><b>Role:</b> Full-Stack Developer (sole developer).</p>
+  </div>
+
+  <div class="proj">
+    <div class="proj-name">Proof of Delivery System (NetSuite SuiteScript)</div>
+    <p>Web-based NetSuite application closing the gap between item fulfillment and confirmed delivery, with
+      individual driver access to update delivery status from the field.</p>
+    <p>Wrote server-side SuiteScript tied to the Item Fulfillment record so drivers could capture proof of delivery
+      and update fulfillment status in real time, giving operations and finance accurate visibility without manual
+      follow-up.</p>
+    <p class="meta"><b>Stack:</b> NetSuite SuiteScript, SuiteTalk/REST integration.</p>
+  </div>
+
+  <div class="proj">
+    <div class="proj-name">Human Resource Management System</div>
+    <p>Web platform that automates payroll computation and generates payroll reports and MBOS
+      files&mdash;remittances, loans, taxes, night-shift and overtime differentials&mdash;using DTR data from the
+      companion mobile app.</p>
+    <p>Ran weekly progress reviews with the IT supervisor and department managers, and containerized local
+      development with Docker.</p>
+    <p class="meta"><b>Stack:</b> Angular, NestJS, Tailwind CSS, TypeScript, Docker.</p>
+  </div>
+
+  <div class="proj">
+    <div class="proj-name">Daily Time Record (DTR) Mobile Application</div>
+    <p>React Native app that records employee time-in and time-out by scanning a QR-coded ID, with on-site photo
+      capture to verify attendance.</p>
+    <p class="meta"><b>Stack:</b> React Native, NestJS, TypeScript, React Native Paper, Redux.</p>
+  </div>
+
+  <div class="proj">
+    <div class="proj-name">Delivery Cargo System</div>
+    <p>Truck-monitoring system that tracks load status, computes odometer-based incentives, and produces daily,
+      monthly, and annual reports.</p>
+    <p>Implemented RTK Query for a cleaner, more maintainable front-end data layer and deployed the system in a
+      local Dockerized environment.</p>
+    <p class="meta"><b>Stack:</b> Next.js, NestJS, TypeScript, MUI, Redux, Docker.</p>
+  </div>
+
+  <div class="proj">
+    <div class="proj-name">User Management System</div>
+    <p>Centralized user-management system granting a single set of credentials access to multiple company systems,
+      with routes assigned per user by the admin side.</p>
+    <p class="meta"><b>Role:</b> Full-Stack Developer.</p>
+  </div>
+</div>
+
+<div class="job">
+  <div class="job-head">
+    <span class="job-title">Full-Stack Developer</span>
+    <span class="job-date">Freelance</span>
+  </div>
+  <div class="job-org">CampConnection &middot; California, USA</div>
+  <ul class="bullets">
+    <li>Built a full-featured campsite booking platform for church groups and scouting organizations, enabling
+      users to browse, book, and manage campsites across multiple tailored modules.</li>
+    <li>Led backend development &mdash; booking management, user authentication, and real-time data handling via
+      Firebase.</li>
+    <li>Integrated the CLIQ payment API for secure, streamlined transactions.</li>
+  </ul>
+  <p class="meta" style="margin-left:18pt;margin-top:3.5pt;"><b>Stack:</b> React.js, Firebase, CLIQ Payment API.</p>
+</div>
+
+<div class="job">
+  <div class="job-head">
+    <span class="job-title">Front End Developer</span>
+    <span class="job-date">2020 &ndash; 2021</span>
+  </div>
+  <div class="job-org">iPay Bayad Center, Pagadian</div>
+  <ul class="bullets">
+    <li>Developed features for iPayPaymentCenter, a publicly deployed bill-payment portal restricted to authorized
+      users such as cashiers.</li>
+    <li>Integrated external APIs using secret-key authorization to exchange JSON data reliably between client and
+      server, and designed database and table structures for the web application.</li>
+    <li>Built content-management interfaces for clients, performed code maintenance and system upgrades, and
+      established a routine of planned testing to maintain functionality.</li>
+  </ul>
+  <p class="meta" style="margin-left:18pt;margin-top:3.5pt;"><b>Stack:</b> Angular 12, Tailwind CSS, TypeScript, Node.js, NGRX.</p>
+</div>
+
+<h2 class="sec">Hackathon Projects</h2>
+<div class="proj" style="margin-top:8.2pt;">
+  <div class="proj-name">Raket &mdash; Cross-Border Payments</div>
+  <p>Hackathon build for Filipino freelancers paid from abroad. Gemini turns an uploaded quote into a structured
+    invoice; clients pay by card, Morph settles on-chain in seconds, and pesos land in GCash with a verifiable
+    receipt and BIR-ready tax records.</p>
+  <p class="meta"><b>Stack:</b> Next.js, TypeScript, Turborepo, Gemini API, Morph.</p>
+  <p class="meta"><b>Role:</b> Front-End Developer &middot; TeamPagadian.<span class="gap"></span><b>Repo:</b> github.com/LodiAniez/teampagadian-hackathon</p>
+</div>
+
+<h2 class="sec">Awards &amp; Recognition</h2>
+<div>
+  <div class="award">
+    <div class="award-head">
+      <span class="award-title">Employee Performance Award &mdash; <span class="issuer">Molave Youngs Milling Group</span></span>
+      <span class="award-date">January 2024</span>
+    </div>
+    <p>Awarded as Programmer for a 7.83 rating &mdash; a Satisfactory standing for the 2023 review year.</p>
+  </div>
+
+  <div class="award">
+    <div class="award-head">
+      <span class="award-title">People's Choice Award &mdash; <span class="issuer">Molave Youngs Milling Group</span></span>
+      <span class="award-date">January 2024</span>
+    </div>
+    <p>Peer-voted for being a team player who extends extra help to teammates.</p>
+  </div>
+</div>
+
+<h2 class="sec">Education</h2>
+<div>
+  <div class="edu-head">
+    <span class="edu-degree">Bachelor of Science in Computer Science</span>
+    <span class="edu-date">2014 &ndash; 2019</span>
+  </div>
+  <div class="edu-school">Western Mindanao State University</div>
+</div>
+
+<h2 class="sec">Character References</h2>
+<div class="refs">
+  <div>
+    <div class="ref-name">Dexter Louie Aniez</div>
+    <div class="ref-role">Full-Stack Developer</div>
+    <div class="ref-phone">+63 938 367 3347</div>
+  </div>
+  <div>
+    <div class="ref-name">Legee G. Valmoria</div>
+    <div class="ref-role">Full-Stack Developer</div>
+    <div class="ref-phone">+63 963 626 2392</div>
+  </div>
+</div>
+
+</body>
+</html>
