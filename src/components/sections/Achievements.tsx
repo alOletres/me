@@ -1,5 +1,6 @@
 import type React from 'react';
 import { IconTrophy, IconMedal } from '../Icons';
+import { asset } from '../../lib/asset';
 
 type Achievement = {
   title: string;
@@ -55,7 +56,7 @@ export function Achievements() {
           {achievements.map((a) => (
             <li key={a.title} className="achievement-card">
               <img
-                src={a.image}
+                src={asset(a.image)}
                 alt={`${a.title} certificate issued by ${a.issuer}`}
                 className="achievement-cert"
                 width={a.imageWidth}

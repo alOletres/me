@@ -43,6 +43,28 @@ A section id lives in three places that must stay in sync:
 
 Missing (3) makes the fixed top nav clip the section heading on scroll.
 
+### Deploy base path — read before referencing any `public/` file
+
+The site deploys to GitHub Pages under a subpath (`homepage: https://alOletres.github.io/me`, `npm run deploy`
+→ `gh-pages -d dist`), so `vite.config.ts` sets `base: "/me/"`.
+
+**Never write a root-relative asset path like `src="/avatar.png"`.** Vite rewrites only the URLs it owns —
+`index.html` and bundled `import`s — and cannot see string literals inside components, so a leading-slash path
+survives the build untouched and 404s in production against the domain root.
+
+Use the `asset()` helper in `src/lib/asset.ts`, which prefixes `import.meta.env.BASE_URL`:
+
+```tsx
+<img src={asset('avatar.png')} />        // → /me/avatar.png
+```
+
+It strips a leading slash, so content arrays can keep their existing `image: "/hrms-landing.png"` form and be
+resolved at the render site (`src={asset(image)}`) — that's how `Projects` and `Achievements` do it.
+
+This breaks silently in a way local dev hides: `npm run dev` serves under the base too, but a stale
+already-cached image can mask it. Verify against the real build — `npm run build && npm run preview`, then load
+`http://localhost:4173/me/` and confirm no 404s in the network panel.
+
 ### Theming
 
 Dark is the default. `ThemeContext` sets `document.documentElement.dataset.theme = "light"` and **deletes** the attribute for dark; all light overrides in `index.css` hang off `[data-theme="light"]`. The theme is persisted to `localStorage` under `"theme"`.

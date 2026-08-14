@@ -1,4 +1,5 @@
 import type React from "react";
+import { asset } from "../../lib/asset";
 
 interface Project {
   name: string;
@@ -139,7 +140,7 @@ export function Projects() {
                 {image && (
                   <div className="project-preview">
                     <img
-                      src={image}
+                      src={asset(image)}
                       alt={`${name} preview`}
                       className="project-preview-img"
                       loading="lazy"
